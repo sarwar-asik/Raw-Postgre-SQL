@@ -22,11 +22,31 @@ ALTER DATABASE test1 RENAME TO test3
 #### Create a table about student ::::::
 
 
+**create_student**
 CREATE TABLE student (
     student_id INT,
     first_name VARCHAR(40),
     last_name VARCHAR(30),
     cgpa NUMERIC(1,2)
+)
+
+**create student1**
+CREATE TABLE "user"(
+    user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+  
+)
+
+**create student1 with primary key and unique_name**
+
+CREATE TABLE "user1"(
+    user_id SERIAL,
+    user_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    age int DEFAULT 18,
+    PRIMARY KEY(user_id, user_name),
+    UNIQUE(user_name, email)
 )
 
 
@@ -38,3 +58,13 @@ CREATE TABLE student (
 ### Delete a table ::::
 
 DROP TABLE student;
+
+
+### create table data :::::
+
+
+INSERT INTO "user1" (user_id, user_name,email,age) VALUES (2, 'sarwar', 'sarwarasik@gamail.com', 24);
+
+##### get table data :::::
+
+SELECT * from user1
