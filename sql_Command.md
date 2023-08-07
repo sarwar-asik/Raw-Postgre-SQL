@@ -107,3 +107,46 @@ DROP COLUMN age
             DROP COLUMN age
 
 
+
+**change data type of table**
+
+ALTER TABLE user1
+  ALTER COLUMN demo TYPE TEXT;
+
+        
+        ALTER TABLE user1
+        ALTER COLUMN demo TYPE TEXT;
+
+**set default value of column**
+
+    ALTER TABLE user1
+    alter column demo set DEFAULT 'bangladesh';
+
+**drop default value of column**
+
+    ALTER TABLE user1
+    alter column demo drop DEFAULT ;
+
+
+##### rename a column ADD :::
+
+    ALTER TABLE user1
+    RENAME COLUMN demo to country;
+
+
+
+#### add constrains
+
+ALTER TABLE user1
+alter COLUMN country  set NOT NULL;
+
+
+ALTER TABLE user1
+add constraint unique_email UNIQUE(email);
+
+
+    ALTER TABLE user1
+    alter COLUMN country  set NOT NULL;
+
+    ALTER TABLE user1
+    add constraint unique_email UNIQUE(email);
