@@ -6,19 +6,19 @@
 
 -- create table  ::::
 
--- CREATE TABLE student (
---     student_id INT,
---     first_name VARCHAR(40),
---     last_name VARCHAR(30),
---     cgpa NUMERIC(1,2)
--- )
+CREATE TABLE student (
+    student_id INT,
+    first_name VARCHAR(40),
+    last_name VARCHAR(30),
+    cgpa NUMERIC(1,2)
+)
 
 
 
 -- update table name ::
 
 
---  ALTER TABLE learners RENAME TO student;
+ ALTER TABLE learners RENAME TO student;
 
 
 ----### Delete a table ::::
@@ -35,7 +35,7 @@ CREATE TABLE "user1"(
 );
 
 
--- insert into user1 (1,'abc', 'ab@gmail.com',20)
+insert into user1 (1,'abc', 'ab@gmail.com',20)
 
 
 -- SELECT * from user1;
