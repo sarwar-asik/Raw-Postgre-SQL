@@ -188,3 +188,26 @@ SELECT * from department;
 SELECT * from employee;
 
 
+
+###### course table ::::
+
+
+###### create course table::::
+CREATE Table courses (
+  course_id SERIAL PRIMARY KEY,
+  course_name VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  published_date DATE
+
+);
+
+###### - create courses table data ::::
+INSERT INTO courses(course_name,description, published_date)
+  VALUES
+  ('frontend developer','A complete frontend developer','2023-07-13'),
+  ('backend developer','A complete backend developer',NULL),
+  ('complete web developer','A  complete web developer','2023-05-10');
+
+
+
+SELECT * from courses;
