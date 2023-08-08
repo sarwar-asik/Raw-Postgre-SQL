@@ -150,3 +150,41 @@ add constraint unique_email UNIQUE(email);
 
     ALTER TABLE user1
     add constraint unique_email UNIQUE(email);
+
+
+
+
+#### Employee Table ::::
+
+####  Employee table under to a department ::::
+
+    CREATE TABLE
+        Department(
+            deptID SERIAL PRIMARY KEY,
+            deptName VARCHAR(50)
+        );
+
+#### create table data of department:::
+
+INSERT into department VALUES(1,'IT');
+
+DELETE from department  WHERE deptID =1 ;
+
+SELECT * from department;
+
+        CREATE TABLE
+            Employee(
+                empID SERIAL PRIMARY KEY,
+                empName VARCHAR(50) NOT NULL,
+                departmentID INT,
+                CONSTRAINT fk_constraints_dept FOREIGN KEY (departmentID) REFERENCES Department(deptID)
+            );
+
+
+#### create employe table data::::
+    INSERT INTO Employee VALUES(1,'KHorshed',1);
+
+
+SELECT * from employee;
+
+
