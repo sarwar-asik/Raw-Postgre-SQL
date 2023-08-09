@@ -126,3 +126,49 @@ VALUES
     ('Emma Adams', 'emma@example.com', 49000, '2024-05-30', 1),
     ('Logan Cook', 'logan@example.com', 57000, '2024-06-05', 2),
     ('Chloe Bennett', 'chloe@example.com', 53000, '2024-07-18', 3);
+
+
+
+
+### JOINIng :::::
+
+    CREATE Table department2(
+        department_id INT PRIMARY KEY,
+        department_name VARCHAR(100)
+    );
+
+        INSERT INTO department2 (department_id, department_name)
+        VALUES
+            (1, 'Executive'),
+            (2, 'HR'),
+            (3, 'Sales'),
+            (4, 'Development'),
+            (5, 'Support'),
+            (6, 'Research');
+
+        CREATE Table employee2(
+            employee_id INT PRIMARY KEY,
+            full_name VARCHAR(200),
+            department_id INT,
+            job_role VARCHAR(100),
+            manager_id INT,
+            FOREIGN KEY (department_id) REFERENCES department2(department_id)
+        );
+
+        INSERT INTO employee2 (employee_id, full_name, department_id, job_role, manager_id)
+        VALUES
+            (1, 'John Doe', 3, 'Sales Manager', NULL),
+            (2, 'Jane Smith', 2, 'HR Specialist', 1),
+            (3, 'Michael Johnson', 4, 'Software Developer', 1),
+            (4, 'Alice Brown', 2, 'HR Assistant', 2),
+            (5, 'Robert White', 3, 'Sales Representative', 1),
+            (6, 'Emily Williams', 4, 'Software Engineer', 3),
+            (7, 'Daniel Lee', 5, 'Technical Support Specialist', 6),
+            (8, 'Sophia Martinez', 6, 'Research Scientist', NULL),
+            (9, 'David Johnson', 3, 'Sales Representative', 1),
+            (10, 'Olivia Brown', 4, 'Software Developer', 3),
+            (11, 'James Smith', 5, 'Technical Support Specialist', 6),
+            (12, 'Ella Garcia', 2, 'HR Specialist', 2),
+            (13, 'Matthew Davis', 4, 'Software Engineer', 3),
+            (14, 'Ava Wilson', 6, 'Research Scientist', NULL),
+            (15, 'Liam Mitchell', 3, 'Sales Representative', 5);
