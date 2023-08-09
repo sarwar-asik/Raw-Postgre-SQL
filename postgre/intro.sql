@@ -275,3 +275,129 @@ WHERE name  LIKE 'J%s';
 -- get NULL data ::::
 
 SELECT * from employee WHERE deptid IS  NUll;
+
+
+-- JOINIng Concept :::::
+
+CREATE Table department2(
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100)
+);
+
+INSERT INTO department2 (department_id, department_name)
+VALUES
+    (1, 'Executive'),
+    (2, 'HR'),
+    (3, 'Sales'),
+    (4, 'Development'),
+    (5, 'Support'),
+    (6, 'Research');
+
+CREATE Table employee2(
+    employee_id INT PRIMARY KEY,
+    full_name VARCHAR(200),
+    department_id INT,
+    job_role VARCHAR(100),
+    manager_id INT,
+    FOREIGN KEY (department_id) REFERENCES department2(department_id)
+);
+
+INSERT INTO employee2 (employee_id, full_name, department_id, job_role, manager_id)
+VALUES
+    (1, 'John Doe', 3, 'Sales Manager', NULL),
+    (2, 'Jane Smith', 2, 'HR Specialist', 1),
+    (3, 'Michael Johnson', 4, 'Software Developer', 1),
+    (4, 'Alice Brown', 2, 'HR Assistant', 2),
+    (5, 'Robert White', 3, 'Sales Representative', 1),
+    (6, 'Emily Williams', 4, 'Software Engineer', 3),
+    (7, 'Daniel Lee', 5, 'Technical Support Specialist', 6),
+    (8, 'Sophia Martinez', 6, 'Research Scientist', NULL),
+    (9, 'David Johnson', 3, 'Sales Representative', 1),
+    (10, 'Olivia Brown', 4, 'Software Developer', 3),
+    (11, 'James Smith', 5, 'Technical Support Specialist', 6),
+    (12, 'Ella Garcia', 2, 'HR Specialist', 2),
+    (13, 'Matthew Davis', 4, 'Software Engineer', 3),
+    (14, 'Ava Wilson', 6, 'Research Scientist', NULL),
+    (15, 'Liam Mitchell', 3, 'Sales Representative', 5);
+
+
+
+
+SELECT * from department2;
+
+SELECT * from employee2;
+
+-- start joining concept ::::
+
+SELECT employee2.full_name,employee2.job_role,employee2.manager_id,department2.department_name
+FROM employee2
+INNER JOIN department2  ON  department2.department_id = employee2.department_id ;
+
+
+-- left join ::::
+
+SELECT *
+FROM employee2
+LEFT JOIN department2  ON  department2.department_id = employee2.department_id ;
+
+
+-- RIGHT join ::::
+
+SELECT *
+FROM employee2
+RIGHT JOIN department2  ON  department2.department_id = employee2.department_id ;
+
+
+
+-- FULL join ::::
+
+SELECT *
+FROM employee2
+FULL JOIN department2  ON  department2.department_id = employee2.department_id ;
+
+
+-- Natural JOIN ::::
+
+SELECT *
+from employee
+NATURAL JOIN department2;
+
+
+-- CROSS JOIN ::::
+
+SELECT *
+from employee
+CROSS JOIN department2;
+-- -----------------  noted --------------------------
+
+
+
+-- AGGREGATE Function ::::
+
+SELECT * from employee;
+
+-- get average salary :::
+SELECT AVG(salary) as AverageSalary from employee;
+
+-- get MAX salary :::
+SELECT MAX(salary) as MaximumSalary from employee;
+
+
+-- get SUM salary :::
+SELECT SUM(salary) as TotalSalary from employee;
+
+-- group avarage data ;
+SELECT deptid, AVG(salary) from employee GROUP BY deptid;
+
+
+-- Aggregate with joining ::::
+
+SELECT d.deptname, avg(e.salary),sum(e.salary) as TOtalSalary,max(e.salary),min(e.salary),count(*) from employee e
+FULL JOIN department d on e.deptid = d.deptid
+GROUP BY d.deptname         ;
+
+
+SELECT d ,sum(salary),count(*) from department d
+ FULL JOIN employee e on e.deptid = d.deptid
+ GROUP BY d.deptid HAVING sum(e.salary) > 40000
+
