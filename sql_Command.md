@@ -209,5 +209,28 @@ INSERT INTO courses(course_name,description, published_date)
   ('complete web developer','A  complete web developer','2023-05-10');
 
 
+##### update  a table data ::::
+
+    UPDATE courses 
+    set
+    course_name ='SQL for Smart'
+    WHERE course_id = 1 
+    ;
+
+UPDATE courses 
+ set
+ description ='be a smart tech learner'
+ WHERE course_id > 1 or  course_id  < 5
+ ;
+
+
+ ##### delete a table  data ::::
+
+        DELETE FROM courses 
+        WHERE course_id = 4;
+j
+DELETE FROM courses 
+WHERE course_id = 4;
+
 
 SELECT * from courses;
