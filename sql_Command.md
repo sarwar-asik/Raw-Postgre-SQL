@@ -82,11 +82,18 @@ VALUES
 ('mohammad','mahammod@gmail.com')
 
  
-##### get table all  data :::::
+##### get table   data :::::
+
+**get all data**
 
 SELECT * from user1             
 
         SELECT * from user1
+**get unique data**
+SELECT DISTINCT emp_department from employee;
+**get custom data**
+SELECT * from employee
+WHERE salary > 55000 and salary < 60000
 
 
 #### insert a column in a table :::
