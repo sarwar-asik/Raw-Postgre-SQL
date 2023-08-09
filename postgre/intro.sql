@@ -2,23 +2,29 @@ DROP DATABASE university_manaagement2;
 
 CREATE DATABASE test1;
 
-ALTER DATABASE test1 RENAME TO test3 ;
+ALTER DATABASE test1 RENAME TO test3
 
 -- create table  ::::
 
-CREATE TABLE
-    student (
-        student_id INT,
-        first_name VARCHAR(40),
-        last_name VARCHAR(30),
-        cgpa NUMERIC(1, 2)
-    ) -- update table name ::
-ALTER TABLE
-    learners RENAME TO student;
+CREATE TABLE student (
 
-----### Delete a table ::::
+    student_id INT,
 
--- DROP TABLE student;
+    first_name VARCHAR(40),
+
+    last_name VARCHAR(30),
+
+    cgpa NUMERIC(1,2)
+
+)
+
+-- update table name ::
+
+ ALTER TABLE learners RENAME TO student;
+
+--### Delete a table ::::
+
+DROP TABLE student;
 
 CREATE TABLE
     "user1"(
@@ -28,7 +34,7 @@ CREATE TABLE
         age int DEFAULT 18,
     );
 
-insert into user1 (1,'abc', 'ab@gmail.com',20);
+-- insert into user1 (1,'abc', 'ab@gmail.com',20)
 
 -- SELECT * from user1;
 
@@ -51,11 +57,11 @@ VALUES (
         'mahammod@gmail.com'
     );
 
-ALTER TABLE user1
-add
-    COLUMN password VARCHAR(255) DEFAULT 'admin1234' NOT NULL;
-alter TABLE
-    user1 DROP COLUMN age;
+-- ALTER TABLE user1
+
+-- add COLUMN password VARCHAR(255) DEFAULT 'admin1234' NOT NULL
+
+alter TABLE user1 DROP COLUMN age;
 
 -- SELECT * from user1
 
@@ -78,12 +84,6 @@ ALTER TABLE user1 RENAME COLUMN demo to country;
 ALTER TABLE user1 alter COLUMN country set NOT NULL;
 
 ALTER TABLE user1 add constraint unique_email UNIQUE(email);
-
-SELECT * from user1 ;
-
-
-
-
 
 -- Employee Table ::::
 
@@ -119,3 +119,159 @@ INSERT INTO Employee VALUES(1,'KHorshed',1);
 SELECT * from employee;
 
 
+-- course table ::::
+
+
+---- create course table::::
+CREATE Table courses (
+  course_id SERIAL PRIMARY KEY,
+  course_name VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  published_date DATE
+
+);
+
+------- create courses table data ::::
+INSERT INTO courses(course_name,description, published_date)
+  VALUES
+  ('frontend developer','A complete frontend developer','2023-07-13'),
+  ('backend developer','A complete backend developer',NULL),
+  ('complete web developer','A  complete web developer','2023-05-10');
+
+
+-- update a table data ::::
+
+UPDATE courses 
+ set
+ description ='be a smart tech learner'
+ WHERE course_id > 1 or  course_id  < 5
+ ;
+
+
+-- delete a data ::::
+
+DELETE FROM courses 
+WHERE course_id = 4;
+
+
+CREATE table IF NOT EXISTs department(
+    deptID SERIAL PRIMARY KEY,
+    name TEXT not NULL
+);
+
+INSERT INTO department (deptname)
+VALUES
+('Marketing'),
+('Finance'),
+('Sales');
+
+CREATE TABLE if not exists employee(
+    empID SERIAL PRIMARY key,
+    name text not null,
+    email TEXT NOT  NULL,
+    salary INTEGER NOT NULL,
+    joining_date date not NULL,
+    deptID INTEGER not NULL,
+    constraint  fk_deptID
+       FOREIGN KEY(deptID)
+       REFERENCES department(deptID)
+);
+
+INSERT INTO employee (name, email, salary, joining_date, deptID)
+VALUES
+     ('Samuel Harris', 'samuel@example.com', 52000, '2024-02-20', 1),
+    ('Grace Turner', 'grace@example.com', 54000, '2024-03-12', 2),
+    ('Liam Mitchell', 'liam@example.com', 61000, '2024-04-25', 3),
+   
+    ('Emma Adams', 'emma@example.com', 49000, '2024-05-30', 1),
+    ('Logan Cook', 'logan@example.com', 57000, '2024-06-05', 2),
+    ('Chloe Bennett', 'chloe@example.com', 53000, '2024-07-18', 3);
+
+
+
+
+-- smart query from databse ::::::
+
+
+-- get all data :::
+SELECT * from department;
+
+-- get selected data :::::
+SELECT name,email,joining_date from employee;
+
+-- condition query::::
+SELECT * from employee
+WHERE salary > 55000 and salary < 60000 and name <> 'Olivia';
+-- WHERE name <> 'Olivia;'
+
+
+-- ascending order by sorting :::::
+SELECT * FROM employee
+ORDER BY name
+ASC;
+
+
+--  #### pagination :"::"
+SELECT * FROM employee
+ORDER BY name
+DESC LIMIT 5 OFFSET 1; 
+
+-- maximum salary sorting ::::
+
+SELECT * FROM employee ORDER BY salary DESC 
+LIMIT 1;
+
+
+-- Get first 3 maximum salary sorting ::::
+
+SELECT * FROM employee ORDER BY salary DESC 
+LIMIT 1 OFFSET 2;
+
+-- IN , NOT, BETWEEN, LIKE
+
+-- get without 2,3,5 empid employee(NOT IN)::::
+
+SELECT * from employee 
+WHERE empid  NOT IN (2,3,5,10);
+
+-- BETWEEN get salary customize::::
+
+SELECT * from employee
+WHERE salary BETWEEN 50000 AND 60000;
+
+-- get data contain 'Ja' LIKE ::::
+SELECT * from employee
+WHERE name  LIKE '%Ja%';
+
+
+-- get data started with 'j'(match only first CHARACTER)  LIKE ::::
+SELECT * from employee
+WHERE name  LIKE 'J%';
+
+-- get data end with 's'(match only last CHARACTER)  LIKE ::::
+SELECT * from employee
+WHERE name  LIKE '%s';
+
+
+
+-- specipic position :::
+
+
+-- find "m" in 2nd position  ::::
+SELECT * from employee
+WHERE name  LIKE '_m%';
+
+
+-- find "m" in 3rd position  ::::
+SELECT * from employee
+WHERE name  LIKE '__m%';
+
+
+-- get data started with 'J' and end with 's' LIKE
+
+SELECT * from employee
+WHERE name  LIKE 'J%s';
+
+-- get NULL data ::::
+
+SELECT * from employee WHERE deptid IS  NUll;
