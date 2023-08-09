@@ -1,8 +1,12 @@
-DROP DATABASE university_manaagement2;
 
-CREATE DATABASE test1;
+# SQL Database command (CREATE,UPDATE,GET,DELETE,AGGREGATE,JOINING) ::::
 
-ALTER DATABASE test1 RENAME TO test3
+
+        DROP DATABASE university_manaagement2;
+
+        CREATE DATABASE test1;
+
+        ALTER DATABASE test1 RENAME TO test3
 
 ##### create table  ::::
 
@@ -190,7 +194,7 @@ CREATE TABLE student (
 
 
 
-##### smart query from databse ::::::
+# smart query from databse ::::::
 
 
 ##### get all data :::
@@ -227,7 +231,7 @@ CREATE TABLE student (
             SELECT * FROM employee ORDER BY salary DESC 
                 LIMIT 1 OFFSET 2;
 
-##### IN , NOT, BETWEEN, LIKE
+## IN , NOT, BETWEEN, LIKE
 
 ##### get without 2,3,5 empid employee(NOT IN)::::
 
@@ -277,7 +281,7 @@ CREATE TABLE student (
         SELECT * from employee WHERE deptid IS  NUll;
 
 
-##### JOINIng Concept :::::
+## JOINIng Concept :::::
 
     CREATE Table department2(
         department_id INT PRIMARY KEY,
@@ -399,8 +403,9 @@ CREATE TABLE student (
 
 
 
-    **or**
-            SELECT d ,sum(salary),count(*) from department d
-                FULL JOIN employee e on e.deptid = d.deptid
-                GROUP BY d.deptid HAVING sum(e.salary) > 40000
+**or WITH CONDITION**
+
+                    SELECT d ,sum(salary),count(*) from department d
+                        FULL JOIN employee e on e.deptid = d.deptid
+                        GROUP BY d.deptid HAVING sum(e.salary) > 40000
 
