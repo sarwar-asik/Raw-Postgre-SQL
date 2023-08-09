@@ -40,4 +40,4 @@ SELECT * from orders;
 -- solution task-2 :::
 
 SELECT customer_id, AVG(total_amount) as average_total_amount from orders GROUP BY customer_id
-HAVING sum(total_amount) > 250 ;
+HAVING avg(total_amount) >= 250 ;
