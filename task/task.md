@@ -27,6 +27,15 @@ Expected Result:
 | John Doe | 50000.00 |
 | Emily Brown | 52000.00 |
 
+
+
+
+#### solution task-1 :::::
+
+    SELECT emp_name,salary from employees where department = 'HR';
+
+
+
 Task 2: Aggregation and HAVING Clause
 Create a table named "orders" with columns (order_id, customer_id, total_amount) and insert the following data:
 
@@ -52,6 +61,14 @@ Expected Result:
 | customer_id | average_total_amount |
 |----------------|----------------------|
 | 2 | 275.00 |
+
+
+
+
+#### solution task-2 :::
+
+        SELECT customer_id, AVG(total_amount) as average_total_amount from orders GROUP BY customer_id
+        HAVING avg(total_amount) >= 250 ;
 
 Task 3: JOIN and GROUP BY
 Create two tables named "students" and "courses" with columns as follows:
@@ -107,6 +124,15 @@ Expected Result:
 | Bob | Physics | 3 |
 | Charlie | Mathematics | 3 |
 
+
+#### task-3 solution :::
+
+        SELECT s.student_name,cr.course_name,cr.credits
+        from students s
+        JOIN enrollment e on e.student_id = s.student_id
+        JOIN courses cr on cr.course_id = e.course_id ;
+
+
 Task 4: Multiple Joins and Aggregation
 Create three tables named "employees," "departments," and "salaries" with columns as follows:
 
@@ -156,6 +182,17 @@ Expected Result:
 | IT | 60000.00 |
 | HR | 52500.00 |
 | Finance | 52000.00 |
+
+
+
+#### solution task-4
+
+    SELECT dept.department_name, avg(sal.salary) as average_salary from salaries sal
+    join employees emp on emp.emp_id = sal.emp_id
+    JOIN departments dept on dept.department_id =emp.department_id
+    GROUP BY dept.department_name 
+    ORDER BY avg(sal.salary) DESC;
+
 
 Task 5: Aggregation and Grouping
 Create a table named "orders" with columns (order_id, customer_id, order_date, total_amount) and insert the following data:
