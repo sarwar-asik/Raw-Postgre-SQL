@@ -300,9 +300,7 @@ CREATE Table employee2(
     job_role VARCHAR(100),
     manager_id INT,
     FOREIGN KEY (department_id) REFERENCES department2(department_id)
-)
-
-
+);
 
 INSERT INTO employee2 (employee_id, full_name, department_id, job_role, manager_id)
 VALUES
