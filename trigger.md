@@ -1,4 +1,4 @@
-####  update automatic final_price  before create product 
+####  update automatic final_price  after create product 
 
 **step-1**
 
