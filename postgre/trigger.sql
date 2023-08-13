@@ -1,4 +1,4 @@
--- update automatic final_price  after create product 
+-- update automatic final_price  before create product 
 
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
@@ -28,6 +28,6 @@ END;
 $$;
 
 
-INSERT INTO products(title,base_price) VALUES('Mango',99);
+INSERT INTO products(title,base_price) VALUES('Graps',79);
 
 SELECT * FROM products;

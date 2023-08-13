@@ -1,6 +1,6 @@
 ##### index for fast query ::::
 
-SELECT \* from employee;
+SELECT * from employee;
 
 ##### for watch or scan the query time to query the data ?
 

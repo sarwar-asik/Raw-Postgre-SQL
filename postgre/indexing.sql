@@ -12,4 +12,6 @@ EXPLAIN ANALYZE SELECT empID, name,email from employee;
 
 CREATE INDEX name_idx on employee(name);
 
+CREATE INDEX salary_idx on employee(salary);
+
 -- don't use LIKE for query with indexing ::::
