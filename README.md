@@ -1,3 +1,9 @@
+## SQL Note :::: 
+
+**main_repo** 
+
+                  https://github.com/sarwar-asik/DB-INFO
+
 
 # SQL Database command (CREATE,UPDATE,GET,DELETE,AGGREGATE,JOINING) ::::
 
