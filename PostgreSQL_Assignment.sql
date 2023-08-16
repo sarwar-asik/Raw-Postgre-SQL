@@ -69,10 +69,23 @@ VALUES
 SELECT * from students;
 
 --***Query 2 >>>>>>>>>>: 
--- Retrieve the names of all students who are enrolled in the course titled 'Next.js'.
+
 
 SELECT stu.student_name, co.course_name from students stu
 JOIN enrollment enroll on stu.student_id = enroll.student_id
 join courses co on co.course_id = enroll.course_id
 where co.course_name = 'Next.js';
 
+
+
+--***Query 3 >>>>>>>>>>: 
+
+
+
+
+update students 
+set status = 'Awarded'
+WHERE (frontend_mark+backend_mark)=(
+    SELECT max (frontend_mark+ backend_mark)
+   from students
+);
