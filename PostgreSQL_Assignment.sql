@@ -1,4 +1,4 @@
---Table Creation ---
+                    --Table Creation ---
 
 --! 1:::students TABLE ---
 
@@ -66,6 +66,7 @@ SELECT * from enrollment;
 INSERT INTO
     students (student_name,age,email,frontend_mark,backend_mark)
 VALUES 
+('Alice',24,'bob@example.com',30,43),
 ('Bob',21,'bob@example.com',34,45),
 ('Charlie',23,'charlie@example.com',60,59),
 ('David',20,'david@example.com',40,49),
