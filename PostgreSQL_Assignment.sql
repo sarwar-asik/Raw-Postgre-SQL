@@ -46,14 +46,12 @@ CREATE TABLE
 
 
 
---- ** enrollment data insert **--
+---! ** enrollment data insert **--
 INSERT INTO
     enrollment (student_id, course_id)
 VALUES (1, 1), (1, 2), (2, 1), (3, 2);
 
 SELECT * from enrollment;
-
-
 
 
 
@@ -77,8 +75,6 @@ VALUES
 
 SELECT * from students;
 
-
-
 --***Query 2 >>>>>>>>>>: 
 
 SELECT stu.student_name, co.course_name from students stu
@@ -89,7 +85,8 @@ where co.course_name = 'Next.js';
 
 
 
---***Query 3 >>>>>>>>>>: 
+--***Query 3 (update for selection Awarded) >>>>>>>>>>: 
+
 update students 
 set status = 'Awarded'
 WHERE (frontend_mark+backend_mark)=(
@@ -100,7 +97,7 @@ WHERE (frontend_mark+backend_mark)=(
 
 
 
---***Query 4 >>>>>>>>>>: 
+--***  Query 4 >>>>>>>>>>: 
 
 DELETE from courses
 WHERE courses.course_id not in (
@@ -139,3 +136,4 @@ SELECT student_name  from students
 WHERE email LIKE '%example.com%';
 
 
+-- ------------------------   ----------------  COMPLETED QUERIES -----------------------------------
