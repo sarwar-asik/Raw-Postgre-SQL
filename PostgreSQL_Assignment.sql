@@ -26,16 +26,17 @@ CREATE TABLE
         credits INTEGER
     );
 
--- ** create courses table data ***
 
+
+-- ** create courses table data ***
 INSERT into
     courses (course_name, credits)
 VALUES ('Next.js', 3), ('React.js', 4), ('Databases', 3), ('Prisma', 3);
 
 SELECT * from courses;
 
--- ! 3:::enrollment TABLE ---
 
+-- ! 3:::enrollment TABLE ---
 CREATE TABLE
     enrollment (
         enrollment_id SERIAL PRIMARY KEY,
@@ -43,15 +44,23 @@ CREATE TABLE
         course_id INTEGER REFERENCES courses(course_id)
     );
 
---- ** enrollment data insert **--
 
+
+--- ** enrollment data insert **--
 INSERT INTO
     enrollment (student_id, course_id)
 VALUES (1, 1), (1, 2), (2, 1), (3, 2);
 
 SELECT * from enrollment;
 
+
+
+
+
+
+
 --!  *** Execute SQL queries -----
+
 
 
 --***Query 1 >>>>>>>>>>: 
@@ -68,8 +77,9 @@ VALUES
 
 SELECT * from students;
 
---***Query 2 >>>>>>>>>>: 
 
+
+--***Query 2 >>>>>>>>>>: 
 
 SELECT stu.student_name, co.course_name from students stu
 JOIN enrollment enroll on stu.student_id = enroll.student_id
@@ -78,11 +88,8 @@ where co.course_name = 'Next.js';
 
 
 
+
 --***Query 3 >>>>>>>>>>: 
-
-
-
-
 update students 
 set status = 'Awarded'
 WHERE (frontend_mark+backend_mark)=(
@@ -92,8 +99,8 @@ WHERE (frontend_mark+backend_mark)=(
 
 
 
+
 --***Query 4 >>>>>>>>>>: 
--- Delete all courses that have no students enrolled.
 
 DELETE from courses
 WHERE courses.course_id not in (
@@ -102,36 +109,32 @@ WHERE courses.course_id not in (
 );
 
 
+
 --***Query 5 >>>>>>>>>>: 
--- Retrieve the names of students using a limit of 2, starting from the 3rd student.
 
 SELECT * from students
 ORDER BY student_id ASC
 LIMIT 2 OFFSET 2;
 
 
+
+
 --***Query 6 >>>>>>>>>>: 
-
-SELECT * from courses;
-SELECT * from enrollment;
-
 
 SELECT co.course_name ,count(enr.student_id) as students_enrolled from enrollment enr
 LEFT Join courses co on enr.course_id = co.course_id
 GROUP BY co.course_name ;
 
+
+
 --***Query 7 >>>>>>>>>>: 
-
--- Calculate and display the average age of all students.
-
 
 SELECT AVG(age) as average_age from students;
 
 
---***Query 8 >>>>>>>>>>: 
 
--- Retrieve the names of students whose email addresses contain 'example.com'.
 
+--  *** Query 8 >>>>>>>>>>: 
 SELECT student_name  from students
 WHERE email LIKE '%example.com%';
 
