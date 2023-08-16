@@ -1,51 +1,74 @@
+--Table Creation ---
 
-
-
-
-
-            --Table Creation ---
-
-
--- 1:::students TABLE ---
-
-
+--! 1:::students TABLE ---
 
 ---create table ---
 
-CREATE Table students(
-    student_id SERIAL PRIMARY KEY,
-    student_name  VARCHAR(30),
-    age INTEGER,
-    email VARCHAR(40),
-    frontend_mark INTEGER,
-    backend_mark INTEGER,
-    status VARCHAR(50)
-);
+CREATE Table
+    students(
+        student_id SERIAL PRIMARY KEY,
+        student_name VARCHAR(30),
+        age INTEGER,
+        email VARCHAR(40),
+        frontend_mark INTEGER,
+        backend_mark INTEGER,
+        status VARCHAR(50)
+    );
 
---create table data ----
-INSERT INTO students (student_name, age, email, frontend_mark, backend_mark)
+
+
+--! 2:::courses TABLE ---
+
+CREATE TABLE
+    courses (
+        course_id SERIAL PRIMARY KEY,
+        course_name VARCHAR(255),
+        credits INTEGER
+    );
+
+-- ** create courses table data ***
+
+INSERT into
+    courses (course_name, credits)
+VALUES ('Next.js', 3), ('React.js', 4), ('Databases', 3), ('Prisma', 3);
+
+SELECT * from courses;
+
+-- ! 3:::enrollment TABLE ---
+
+CREATE TABLE
+    enrollment (
+        enrollment_id SERIAL PRIMARY KEY,
+        student_id INTEGER REFERENCES students(student_id),
+        course_id INTEGER REFERENCES courses(course_id)
+    );
+
+--- ** enrollment data insert **--
+
+INSERT INTO
+    enrollment (student_id, course_id)
+VALUES (1, 1), (1, 2), (2, 1), (3, 2);
+
+SELECT * from enrollment;
+
+--!  *** Execute SQL queries -----
+
+
+--***Query 1 >>>>>>>>>>: 
+
+INSERT INTO
+    students (student_name,age,email,frontend_mark,backend_mark)
 VALUES 
-('Alice', 22, 'alice@example.com', 55, 57),
-('Bob', 21, 'bob@example.com', 34, 45),
-('Charlie', 23, 'charlie@example.com', 60, 59),
-('David', 20, 'david@example.com', 40, 49),
-('Eve', 24, 'newemail@example.com', 45, 34),
-('Rahim', 23, 'rahim@gmail.com', 46, 42);
+('Bob',21,'bob@example.com',34,45),
+('Charlie',23,'charlie@example.com',60,59),
+('David',20,'david@example.com',40,49),
+('Eve',24,'newemail@example.com',45,34),
+('Rahim',23,'rahim@gmail.com',46,42);
+
 
 SELECT * from students;
 
---** courses table ***
+--***Query 2 >>>>>>>>>>: 
 
-CREATE TABLE courses (
-    course_id SERIAL PRIMARY KEY,
-    course_name VARCHAR(255),
-    credits INTEGER
-);
--- ** create courses table data ***
 
-INSERT into courses (course_name, credits)
-VALUES
- ('Next.js', 3),
- ('React.js', 4),
- ('Databases', 3),
- ('Prisma', 3);
+SELECT
