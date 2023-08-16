@@ -91,9 +91,6 @@ WHERE (frontend_mark+backend_mark)=(
 );
 
 
-SELECT * from enrollment;
-
-SELECT * from courses;
 
 --***Query 4 >>>>>>>>>>: 
 -- Delete all courses that have no students enrolled.
@@ -103,3 +100,11 @@ WHERE courses.course_id not in (
     SELECT enrollment.course_id
     from enrollment
 );
+
+
+--***Query 5 >>>>>>>>>>: 
+-- Retrieve the names of students using a limit of 2, starting from the 3rd student.
+
+SELECT * from students
+ORDER BY student_id ASC
+LIMIT 2 OFFSET 2;
