@@ -1,12 +1,14 @@
-## SQL Note :::: 
+## SQL Note ::::
 
-**main_repo** 
+
+
+
+**main_repo**
 
                   https://github.com/sarwar-asik/DB-INFO
 
 
 # SQL Database command (CREATE,UPDATE,GET,DELETE,AGGREGATE,JOINING) ::::
-
 
         DROP DATABASE university_manaagement2;
 
@@ -14,7 +16,7 @@
 
         ALTER DATABASE test1 RENAME TO test3
 
-##### create table  ::::
+##### create table ::::
 
 CREATE TABLE student (
 
@@ -46,7 +48,7 @@ CREATE TABLE student (
 
 ##### insert into user1 (1,'abc', 'ab@gmail.com',20)
 
-#####       SELECT * from user1;
+##### SELECT \* from user1;
 
         INSERT INTO
             "user1" (user_id, user_name, email, age)
@@ -67,13 +69,13 @@ CREATE TABLE student (
                 'mahammod@gmail.com'
             );
 
-##### ALTER TABLE user1
+##### ALTER TABLE user1 
 
 ##### add COLUMN password VARCHAR(255) DEFAULT 'admin1234' NOT NULL
 
         alter TABLE user1 DROP COLUMN age;
 
-#####       SELECT * from user1
+##### SELECT \* from user1
 
 ##### TRUNCATE TABLE user1
 
@@ -97,7 +99,7 @@ CREATE TABLE student (
 
 ##### Employee Table ::::
 
-#####  Employee table under to a department ::::
+##### Employee table under to a department ::::
 
         CREATE TABLE
             Department(
@@ -121,18 +123,17 @@ CREATE TABLE student (
                 CONSTRAINT fk_constraints_dept FOREIGN KEY (departmentID) REFERENCES Department(deptID)
             );
 
-
 ##### create employe table data::::
+
         INSERT INTO Employee VALUES(1,'KHorshed',1);
 
 
         SELECT * from employee;
 
-
 ##### course table ::::
 
-
 ##### create course table::::
+
         CREATE Table courses (
         course_id SERIAL PRIMARY KEY,
         course_name VARCHAR(255) NOT NULL,
@@ -148,19 +149,17 @@ CREATE TABLE student (
         ('backend developer','A complete backend developer',NULL),
         ('complete web developer','A  complete web developer','2023-05-10');
 
-
 ##### update a table data ::::
 
-        UPDATE courses 
+        UPDATE courses
         set
         description ='be a smart tech learner'
         WHERE course_id > 1 or  course_id  < 5
         ;
 
-
 ##### delete a data ::::
 
-        DELETE FROM courses 
+        DELETE FROM courses
         WHERE course_id = 4;
 
 
@@ -192,56 +191,55 @@ CREATE TABLE student (
             ('Samuel Harris', 'samuel@example.com', 52000, '2024-02-20', 1),
             ('Grace Turner', 'grace@example.com', 54000, '2024-03-12', 2),
             ('Liam Mitchell', 'liam@example.com', 61000, '2024-04-25', 3),
-        
+
             ('Emma Adams', 'emma@example.com', 49000, '2024-05-30', 1),
             ('Logan Cook', 'logan@example.com', 57000, '2024-06-05', 2),
             ('Chloe Bennett', 'chloe@example.com', 53000, '2024-07-18', 3);
 
-
-
-
 # smart query from databse ::::::
 
-
 ##### get all data :::
+
         SELECT * from department;
 
 ##### get selected data :::::
+
         SELECT name,email,joining_date from employee;
 
 ##### condition query::::
+
         SELECT * from employee
         WHERE salary > 55000 and salary < 60000 and name <> 'Olivia';
+
 ##### WHERE name <> 'Olivia;'
 
-
 ##### ascending order by sorting :::::
+
             SELECT * FROM employee
             ORDER BY name
             ASC;
 
+##### #### pagination :"::"
 
-#####  #### pagination :"::"
                 SELECT * FROM employee
                 ORDER BY name
-                DESC LIMIT 5 OFFSET 1; 
+                DESC LIMIT 5 OFFSET 1;
 
 ##### maximum salary sorting ::::
 
-            SELECT * FROM employee ORDER BY salary DESC 
+            SELECT * FROM employee ORDER BY salary DESC
              LIMIT 1;
-
 
 ##### Get first 3 maximum salary sorting ::::
 
-            SELECT * FROM employee ORDER BY salary DESC 
+            SELECT * FROM employee ORDER BY salary DESC
                 LIMIT 1 OFFSET 2;
 
 ## IN , NOT, BETWEEN, LIKE
 
 ##### get without 2,3,5 empid employee(NOT IN)::::
 
-        SELECT * from employee 
+        SELECT * from employee
         WHERE empid  NOT IN (2,3,5,10);
 
 ##### BETWEEN get salary customize::::
@@ -250,32 +248,31 @@ CREATE TABLE student (
         WHERE salary BETWEEN 50000 AND 60000;
 
 ##### get data contain 'Ja' LIKE ::::
+
         SELECT * from employee
         WHERE name  LIKE '%Ja%';
 
+##### get data started with 'j'(match only first CHARACTER) LIKE ::::
 
-##### get data started with 'j'(match only first CHARACTER)  LIKE ::::
         SELECT * from employee
         WHERE name  LIKE 'J%';
 
-##### get data end with 's'(match only last CHARACTER)  LIKE ::::
+##### get data end with 's'(match only last CHARACTER) LIKE ::::
+
         SELECT * from employee
         WHERE name  LIKE '%s';
 
-
-
 ##### specipic position :::
 
+##### find "m" in 2nd position ::::
 
-##### find "m" in 2nd position  ::::
         SELECT * from employee
         WHERE name  LIKE '_m%';
 
+##### find "m" in 3rd position ::::
 
-##### find "m" in 3rd position  ::::
         SELECT * from employee
             WHERE name  LIKE '__m%';
-
 
 ##### get data started with 'J' and end with 's' LIKE
 
@@ -285,7 +282,6 @@ CREATE TABLE student (
 ##### get NULL data ::::
 
         SELECT * from employee WHERE deptid IS  NUll;
-
 
 ## JOINIng Concept :::::
 
@@ -311,7 +307,6 @@ CREATE TABLE student (
         manager_id INT,
         FOREIGN KEY (department_id) REFERENCES department2(department_id)
     );
-
 
 ##### create employee table data
 
@@ -346,13 +341,11 @@ CREATE TABLE student (
         FROM employee2
         INNER JOIN department2  ON  department2.department_id = employee2.department_id ;
 
-
 ##### left join ::::
 
         SELECT *
         FROM employee2
         LEFT JOIN department2  ON  department2.department_id = employee2.department_id ;
-
 
 ##### RIGHT join ::::
 
@@ -360,14 +353,11 @@ CREATE TABLE student (
         FROM employee2
         RIGHT JOIN department2  ON  department2.department_id = employee2.department_id ;
 
-
-
 ##### FULL join ::::
 
         SELECT *
         FROM employee2
         FULL JOIN department2  ON  department2.department_id = employee2.department_id ;
-
 
 ##### Natural JOIN ::::
 
@@ -375,31 +365,29 @@ CREATE TABLE student (
         from employee
         NATURAL JOIN department2;
 
-
 ##### CROSS JOIN ::::
 
         SELECT * from employee CROSS JOIN department2;
-
-
-
 
 ##### AGGREGATE Function ::::
 
         SELECT * from employee;
 
 ##### get average salary :::
+
         SELECT AVG(salary) as AverageSalary from employee;
 
 ##### get MAX salary :::
+
         SELECT MAX(salary) as MaximumSalary from employee;
 
-
 ##### get SUM salary :::
+
         SELECT SUM(salary) as TotalSalary from employee;
 
 ##### group avarage data ;
-        SELECT deptid, AVG(salary) from employee GROUP BY deptid;
 
+        SELECT deptid, AVG(salary) from employee GROUP BY deptid;
 
 ##### Aggregate with joining ::::
 
@@ -407,11 +395,8 @@ CREATE TABLE student (
             FULL JOIN department d on e.deptid = d.deptid
             GROUP BY d.deptname         ;
 
-
-
 **or WITH CONDITION**
 
                     SELECT d ,sum(salary),count(*) from department d
                         FULL JOIN employee e on e.deptid = d.deptid
                         GROUP BY d.deptid HAVING sum(e.salary) > 40000
-

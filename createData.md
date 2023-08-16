@@ -52,11 +52,11 @@ CREATE TABLE
         );
 
 
-CREATE TABLE
-    Department(
-        deptID SERIAL PRIMARY KEY,
-        deptName VARCHAR(50)
-    );
+    CREATE TABLE
+        Department(
+            deptID SERIAL PRIMARY KEY,
+            deptName VARCHAR(50)
+        );
 
 -- create table data of department:::
 
@@ -64,40 +64,40 @@ INSERT into department VALUES(1,'IT');
 
 
 
-CREATE TABLE
-    Employee(
-        empID SERIAL PRIMARY KEY,
-        empName VARCHAR(50) NOT NULL,
-        departmentID INT,
-        CONSTRAINT fk_constraints_dept FOREIGN KEY (departmentID) REFERENCES Department(deptID)
-    );
+    CREATE TABLE
+        Employee(
+            empID SERIAL PRIMARY KEY,
+            empName VARCHAR(50) NOT NULL,
+            departmentID INT,
+            CONSTRAINT fk_constraints_dept FOREIGN KEY (departmentID) REFERENCES Department(deptID)
+        );
 
 
 INSERT INTO Employee VALUES(1,'KHorshed',1);
 
 
 
-CREATE Table courses (
-  course_id SERIAL PRIMARY KEY,
-  course_name VARCHAR(255) NOT NULL,
-  description VARCHAR(255),
-  published_date DATE
+    CREATE Table courses (
+    course_id SERIAL PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    published_date DATE
 
-);
+    );
 
 ###### create courses table data ::::
-INSERT INTO courses(course_name,description, published_date)
-  VALUES
-  ('frontend developer','A complete frontend developer','2023-07-13'),
-  ('backend developer','A complete backend developer',NULL),
-  ('complete web developer','A  complete web developer','2023-05-10');
+    INSERT INTO courses(course_name,description, published_date)
+    VALUES
+    ('frontend developer','A complete frontend developer','2023-07-13'),
+    ('backend developer','A complete backend developer',NULL),
+    ('complete web developer','A  complete web developer','2023-05-10');
 
 
 
-CREATE table IF NOT EXISTs department(
-    deptID SERIAL PRIMARY KEY,
-    name TEXT not NULL
-);
+    CREATE table IF NOT EXISTs department(
+        deptID SERIAL PRIMARY KEY,
+        name TEXT not NULL
+    );
 
 INSERT INTO department (deptname)
 VALUES
@@ -105,17 +105,17 @@ VALUES
 ('Finance'),
 ('Sales');
 
-CREATE TABLE if not exists employee(
-    empID SERIAL PRIMARY key,
-    name text not null,
-    email TEXT NOT  NULL,
-    salary INTEGER NOT NULL,
-    joining_date date not NULL,
-    deptID INTEGER not NULL,
-    constraint  fk_deptID
-       FOREIGN KEY(deptID)
-       REFERENCES department(deptID)
-);
+    CREATE TABLE if not exists employee(
+        empID SERIAL PRIMARY key,
+        name text not null,
+        email TEXT NOT  NULL,
+        salary INTEGER NOT NULL,
+        joining_date date not NULL,
+        deptID INTEGER not NULL,
+        constraint  fk_deptID
+        FOREIGN KEY(deptID)
+        REFERENCES department(deptID)
+    );
 
 INSERT INTO employee (name, email, salary, joining_date, deptID)
 VALUES
