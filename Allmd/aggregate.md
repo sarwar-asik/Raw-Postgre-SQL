@@ -14,7 +14,7 @@
 
     SELECT SUM(salary) as TotalSalary from employee;
 
-##### group avarage data ; 
+##### group avarage data ;
 
     SELECT deptid, AVG(salary) from employee GROUP BY deptid;
 
