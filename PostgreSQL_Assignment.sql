@@ -108,3 +108,15 @@ WHERE courses.course_id not in (
 SELECT * from students
 ORDER BY student_id ASC
 LIMIT 2 OFFSET 2;
+
+
+--***Query 6 >>>>>>>>>>: 
+
+SELECT * from courses;
+SELECT * from enrollment;
+
+
+SELECT co.course_name ,count(enr.student_id) from enrollment enr
+LEFT Join courses co on enr.course_id = co.course_id
+GROUP BY co.course_name
+
