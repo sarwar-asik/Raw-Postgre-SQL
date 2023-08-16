@@ -89,3 +89,17 @@ WHERE (frontend_mark+backend_mark)=(
     SELECT max (frontend_mark+ backend_mark)
    from students
 );
+
+
+SELECT * from enrollment;
+
+SELECT * from courses;
+
+--***Query 4 >>>>>>>>>>: 
+-- Delete all courses that have no students enrolled.
+
+DELETE from courses
+WHERE courses.course_id not in (
+    SELECT enrollment.course_id
+    from enrollment
+);
