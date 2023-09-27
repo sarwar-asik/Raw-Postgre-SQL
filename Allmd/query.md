@@ -10,8 +10,10 @@
         SELECT name,email,joining_date from employee;
 
 ######  condition query::::
+```sql
         SELECT * from employee
 WHERE salary > 55000 and salary < 60000 and name <> 'Olivia';
+```
 ######  WHERE name <> 'Olivia;'
 
 
@@ -22,10 +24,12 @@ ASC;
 
 
 ######   #### pagination :"::"
+```sql
         SELECT * FROM employee
 ORDER BY name
 DESC LIMIT 5 OFFSET 1; 
 
+```
 ######  maximum salary sorting ::::
 
         SELECT * FROM employee ORDER BY salary DESC 
@@ -91,25 +95,34 @@ WHERE name  LIKE 'J%s';
 
 ##### start joining concept ::::
 
+```sql
+
         SELECT employee2.full_name,employee2.job_role,employee2.manager_id,department2.department_name
         FROM employee2
         INNER JOIN department2  ON  department2.department_id = employee2.department_id ;
+        
 
+```
 
 ##### left join ::::
+
+```sql
 
         SELECT *
             FROM employee2
             LEFT JOIN department2  ON  department2.department_id = employee2.department_id ;
 
 
+```
 ##### RIGHT join ::::
 
+```sql
         SELECT *
         FROM employee2
         RIGHT JOIN department2  ON  department2.department_id = employee2.department_id ;
 
 
+```
 
 ##### FULL join ::::
 
@@ -153,6 +166,7 @@ WHERE name  LIKE 'J%s';
 
 ##### Aggregate with joining ::::
 
+```sql
     SELECT d.deptname, avg(e.salary),sum(e.salary) as TOtalSalary,max(e.salary),min(e.salary),count(*) from employee e
         FULL JOIN department d on e.deptid = d.deptid
         GROUP BY d.deptname         ;
@@ -164,8 +178,10 @@ WHERE name  LIKE 'J%s';
 
 
 
+```
 #### sub query for specipic time use
 
+ ```sql
     SELECT * from employee WHERE salary =(
         SELECT max(salary) FROM employee
         );
@@ -179,8 +195,10 @@ WHERE name  LIKE 'J%s';
         SELECT avg(salary) from employee
     );
 
+ ```
  **without using GROUP BY  :::::**
 
+```sql
     SELECT email ,joining_date ,(
         SELECT avg(salary) from employee
         ) from employee;
@@ -194,3 +212,4 @@ WHERE name  LIKE 'J%s';
 
 
     SELECT deptID, AVG(salary) as avg_salary from employee GROUP BY deptID
+```

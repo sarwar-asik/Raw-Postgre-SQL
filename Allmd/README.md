@@ -5,16 +5,18 @@
 
 **main_repo**
 
-                  https://github.com/sarwar-asik/DB-INFO
+https://github.com/sarwar-asik/DB-INFO
 
 
 # SQL Database command (CREATE,UPDATE,GET,DELETE,AGGREGATE,JOINING) ::::
 
+```sql
         DROP DATABASE university_manaagement2;
 
         CREATE DATABASE test1;
 
         ALTER DATABASE test1 RENAME TO test3
+```
 
 ##### create table ::::
 

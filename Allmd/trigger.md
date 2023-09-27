@@ -2,12 +2,15 @@
 
 **step-1**
 
+```sql
+
     CREATE TABLE products (
         id SERIAL PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         base_price FLOAT8 NOT NULL,
         final_price FLOAT8
     );
+```
 
 **create a data**
 
@@ -15,15 +18,18 @@
 
 **step-3**
 #####   ::create trigger ::::
+```sql
 
     CREATE or REPLACE TRIGGER add_tax_trigger 
     BEFORE INSERT on products
     for EACH ROW
     EXECUTE FUNCTION update_final_prices();
+```
 
 **step-2**
 #### ::create function for calling in trigger :::
 
+```sql
         CREATE OR REPLACE FUNCTION update_final_prices()
         RETURNS TRIGGER
         LANGUAGE plpgsql 
@@ -34,9 +40,12 @@
         END;
         $$;
 
+```
 
 **create data**
+```sql
 
     INSERT INTO products(title,base_price) VALUES('Mango',99);
 
 SELECT * FROM products;
+```

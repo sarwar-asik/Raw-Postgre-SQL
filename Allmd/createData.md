@@ -1,11 +1,14 @@
 ##### CREATE DATABASE ::::
-
+```sql 
 CREATE DATABASE test1;
+
+```
 
 
 
 ### create table  ::::
 
+```sql
 CREATE TABLE student (
 
     student_id INT,
@@ -28,8 +31,10 @@ CREATE TABLE
     );
 
 
+```
 #### create table data
 
+ ```sql
      insert into user1 (1,'abc', 'ab@gmail.com',20)
 
      INSERT INTO
@@ -57,8 +62,11 @@ CREATE TABLE
             deptID SERIAL PRIMARY KEY,
             deptName VARCHAR(50)
         );
+ ```
 
 -- create table data of department:::
+
+```sql
 
 INSERT into department VALUES(1,'IT');
 
@@ -85,7 +93,10 @@ INSERT INTO Employee VALUES(1,'KHorshed',1);
 
     );
 
+```
 ###### create courses table data ::::
+```sql
+
     INSERT INTO courses(course_name,description, published_date)
     VALUES
     ('frontend developer','A complete frontend developer','2023-07-13'),
@@ -130,8 +141,11 @@ VALUES
 
 
 
+```
+
 ### JOINIng :::::
 
+```sql
     CREATE Table department2(
         department_id INT PRIMARY KEY,
         department_name VARCHAR(100)
@@ -172,3 +186,4 @@ VALUES
             (13, 'Matthew Davis', 4, 'Software Engineer', 3),
             (14, 'Ava Wilson', 6, 'Research Scientist', NULL),
             (15, 'Liam Mitchell', 3, 'Sales Representative', 5);
+```

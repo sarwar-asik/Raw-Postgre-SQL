@@ -1,6 +1,7 @@
 
 #### sub query for specipic time use
 
+```sql
     SELECT * from employee WHERE salary =(
         SELECT max(salary) FROM employee
         );
@@ -13,8 +14,11 @@
     SELECT * from employee where salary >(
         SELECT avg(salary) from employee
     );
+```
 
  **without using GROUP BY  :::::**
+
+```sql
 
     SELECT email ,joining_date ,(
         SELECT avg(salary) from employee
@@ -29,3 +33,4 @@
 
 
     SELECT deptID, AVG(salary) as avg_salary from employee GROUP BY deptID
+```

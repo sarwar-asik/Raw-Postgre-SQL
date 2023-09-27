@@ -5,19 +5,22 @@
 
 **main_repo**
 
-                  https://github.com/sarwar-asik/DB-INFO
+https://github.com/sarwar-asik/DB-INFO
 
 
-# SQL Database command (CREATE,UPDATE,GET,DELETE,AGGREGATE,JOINING) ::::
+>  SQL Database command (CREATE,UPDATE,GET,DELETE,AGGREGATE,JOINING) ::::
 
+ ```sql
         DROP DATABASE university_manaagement2;
 
         CREATE DATABASE test1;
 
         ALTER DATABASE test1 RENAME TO test3
 
+ ```
 ##### create table ::::
 
+```sql
 CREATE TABLE student (
 
     student_id INT,
@@ -29,12 +32,14 @@ CREATE TABLE student (
     cgpa NUMERIC(1,2)
 
 )
+```
 
 ##### update table name ::
 
         ALTER TABLE learners RENAME TO student;
 
 ###### Delete a table ::::
+```sql
 
         DROP TABLE student;
 
@@ -46,11 +51,13 @@ CREATE TABLE student (
                 age int DEFAULT 18,
             );
 
+```
 ##### insert into user1 (1,'abc', 'ab@gmail.com',20)
 
 ##### SELECT \* from user1;
 
-        INSERT INTO
+```sql
+      INSERT INTO
             "user1" (user_id, user_name, email, age)
         VALUES (
                 2,
@@ -68,6 +75,7 @@ CREATE TABLE student (
                 'mohammad',
                 'mahammod@gmail.com'
             );
+```
 
 ##### ALTER TABLE user1 
 
@@ -109,6 +117,7 @@ CREATE TABLE student (
 
 ##### create table data of department:::
 
+```sql
         INSERT into department VALUES(1,'IT');
 
         DELETE from department  WHERE deptID =1 ;
@@ -122,6 +131,7 @@ CREATE TABLE student (
                 departmentID INT,
                 CONSTRAINT fk_constraints_dept FOREIGN KEY (departmentID) REFERENCES Department(deptID)
             );
+```
 
 ##### create employe table data::::
 
@@ -158,6 +168,7 @@ CREATE TABLE student (
         ;
 
 ##### delete a data ::::
+```sql
 
         DELETE FROM courses
         WHERE course_id = 4;
@@ -196,6 +207,7 @@ CREATE TABLE student (
             ('Logan Cook', 'logan@example.com', 57000, '2024-06-05', 2),
             ('Chloe Bennett', 'chloe@example.com', 53000, '2024-07-18', 3);
 
+```
 # smart query from databse ::::::
 
 ##### get all data :::
@@ -391,12 +403,18 @@ CREATE TABLE student (
 
 ##### Aggregate with joining ::::
 
+```sql
         SELECT d.deptname, avg(e.salary),sum(e.salary) as TOtalSalary,max(e.salary),min(e.salary),count(*) from employee e
             FULL JOIN department d on e.deptid = d.deptid
             GROUP BY d.deptname         ;
+```
 
 **or WITH CONDITION**
 
-                    SELECT d ,sum(salary),count(*) from department d
+```sql
+
+                   SELECT d ,sum(salary),count(*) from department d
                         FULL JOIN employee e on e.deptid = d.deptid
                         GROUP BY d.deptid HAVING sum(e.salary) > 40000
+
+```

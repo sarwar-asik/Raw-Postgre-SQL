@@ -1,5 +1,6 @@
 ### function in sql 
 
+```sql
         CREATE PROCEDURE DEACTIVATE_UNPAID_ACCOUNT()
         LANGUAGE SQL
         AS $$ 
@@ -7,13 +8,19 @@
         $$;
 
 
+
+```
 **call the functions**
 
+```sql
+
     CALL deactivate_unpaid_account() ;
+```
 
 
 #### function 2 
 
+```sql
     CREATE Function account_type_count(account_type text) RETURNS INTEGER
     LANGUAGE plpgsql
     as $$
@@ -23,3 +30,4 @@
         RETURN  account_count;
         END;
     $$
+```

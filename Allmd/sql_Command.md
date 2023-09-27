@@ -5,6 +5,7 @@ CREATE DATABASE test1;
 ALTER DATABASE test1 RENAME TO test3
 
 ##### create table  ::::
+```sql
 
 CREATE TABLE student (
 
@@ -17,6 +18,7 @@ CREATE TABLE student (
     cgpa NUMERIC(1,2)
 
 )
+```
 
 ##### update table name ::
 
@@ -24,6 +26,7 @@ CREATE TABLE student (
 
 ###### Delete a table ::::
 
+```sql
 DROP TABLE student;
 
 CREATE TABLE
@@ -34,9 +37,13 @@ CREATE TABLE
         age int DEFAULT 18,
     );
 
+
+```
 ##### insert into user1 (1,'abc', 'ab@gmail.com',20)
 
 ##### SELECT * from user1;
+
+```sql
 
 INSERT INTO
     "user1" (user_id, user_name, email, age)
@@ -57,6 +64,7 @@ VALUES (
         'mahammod@gmail.com'
     );
 
+```
 ##### ALTER TABLE user1
 
 ##### add COLUMN password VARCHAR(255) DEFAULT 'admin1234' NOT NULL
@@ -67,6 +75,7 @@ alter TABLE user1 DROP COLUMN age;
 
 ##### TRUNCATE TABLE user1
 
+```sql
 ALTER TABLE user1 add COLUMN demo int;
 
 ALTER TABLE user1 ALTER COLUMN demo TYPE TEXT;
@@ -74,6 +83,7 @@ ALTER TABLE user1 ALTER COLUMN demo TYPE TEXT;
 ALTER TABLE user1 alter column country set DEFAULT 'bangladesh';
 
 insert into user1 values (5,'Imdad','imdad@gmail.com');
+```
 
 ##### rename a column ADD
 
@@ -97,6 +107,8 @@ CREATE TABLE
 
 ##### create table data of department:::
 
+```sql
+
 INSERT into department VALUES(1,'IT');
 
 DELETE from department  WHERE deptID =1 ;
@@ -112,6 +124,7 @@ CREATE TABLE
     );
 
 
+```
 ##### create employe table data::::
 INSERT INTO Employee VALUES(1,'KHorshed',1);
 
@@ -123,6 +136,8 @@ SELECT * from employee;
 
 
 ##### create course table::::
+
+```sql
 CREATE Table courses (
   course_id SERIAL PRIMARY KEY,
   course_name VARCHAR(255) NOT NULL,
@@ -138,6 +153,7 @@ INSERT INTO courses(course_name,description, published_date)
   ('backend developer','A complete backend developer',NULL),
   ('complete web developer','A  complete web developer','2023-05-10');
 
+```
 
 ##### update a table data ::::
 
@@ -149,6 +165,8 @@ UPDATE courses
 
 
 ##### delete a data ::::
+```sql
+
 
 DELETE FROM courses 
 WHERE course_id = 4;
@@ -189,6 +207,7 @@ VALUES
 
 
 
+```
 
 ##### smart query from databse ::::::
 
@@ -278,6 +297,7 @@ SELECT * from employee WHERE deptid IS  NUll;
 
 
 ##### JOINIng Concept :::::
+```sql
 
 CREATE Table department2(
     department_id INT PRIMARY KEY,
@@ -327,13 +347,16 @@ SELECT * from department2;
 
 SELECT * from employee2;
 
+```
 ##### start joining concept ::::
+```sql'
 
 SELECT employee2.full_name,employee2.job_role,employee2.manager_id,department2.department_name
 FROM employee2
 INNER JOIN department2  ON  department2.department_id = employee2.department_id ;
 
 
+```
 ##### left join ::::
 
 SELECT *
@@ -392,6 +415,8 @@ SELECT deptid, AVG(salary) from employee GROUP BY deptid;
 
 ##### Aggregate with joining ::::
 
+```sql
+
 SELECT d.deptname, avg(e.salary),sum(e.salary) as TOtalSalary,max(e.salary),min(e.salary),count(*) from employee e
 FULL JOIN department d on e.deptid = d.deptid
 GROUP BY d.deptname         ;
@@ -401,3 +426,5 @@ SELECT d ,sum(salary),count(*) from department d
  FULL JOIN employee e on e.deptid = d.deptid
  GROUP BY d.deptid HAVING sum(e.salary) > 40000
 
+
+```
